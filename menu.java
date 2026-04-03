@@ -4,13 +4,11 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class menu {
-
-        public static void main(String[] args) {
+    public static void main(String[] args) {
             SwingUtilities.invokeLater(MainMenu::new);
         }
 
         static class MainMenu extends JFrame {
-
             MainMenu() {
                 setTitle("Main Menu");
                 setSize(400, 300);
@@ -18,7 +16,7 @@ public class menu {
                 setLocationRelativeTo(null);
                 setLayout(new BorderLayout());
 
-                // ── Menu Bar ──────────────────────────────────────
+                
                 JMenuBar menuBar = new JMenuBar();
 
                 JMenu exercisesMenu = new JMenu("Exercises");
@@ -40,7 +38,7 @@ public class menu {
                 menuBar.add(exercisesMenu);
                 setJMenuBar(menuBar);
 
-                // ── Center content ────────────────────────────────
+                
                 JPanel center = new JPanel(new GridBagLayout());
                 JLabel welcome = new JLabel("Welcome! Select an exercise from the Exercises menu.");
                 welcome.setHorizontalAlignment(SwingConstants.CENTER);
@@ -65,7 +63,7 @@ public class menu {
                 gbc.insets = new Insets(8, 12, 8, 12);
                 gbc.fill   = GridBagConstraints.HORIZONTAL;
 
-                // Instruction label
+
                 JLabel instrLabel = new JLabel("Please enter your name:");
                 gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 3;
                 add(instrLabel, gbc);
@@ -75,13 +73,12 @@ public class menu {
                 gbc.gridy = 1;
                 add(nameField, gbc);
 
-                // Result label
                 JLabel resultLabel = new JLabel(" ");
                 resultLabel.setFont(resultLabel.getFont().deriveFont(Font.BOLD, 14f));
                 gbc.gridy = 2;
                 add(resultLabel, gbc);
 
-                // Buttons
+
                 JButton greetBtn = new JButton("Greet Me");
                 JButton clearBtn = new JButton("Clear");
                 JButton exitBtn  = new JButton("Exit");
@@ -94,7 +91,7 @@ public class menu {
                 gbc.gridy = 3;
                 add(btnPanel, gbc);
 
-                // ── Actions ──────────────────────────────────────
+
                 greetBtn.addActionListener(e -> {
                     String name = nameField.getText().trim();
                     if (name.isEmpty()) {
@@ -132,18 +129,18 @@ public class menu {
                 gbc.insets = new Insets(8, 12, 8, 12);
                 gbc.fill   = GridBagConstraints.HORIZONTAL;
 
-                // Instruction label
+
                 JLabel instrLabel = new JLabel("Enter a word below:");
                 gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 5;
                 add(instrLabel, gbc);
 
-                // Text field
+
                 JTextField wordField = new JTextField(22);
                 wordField.setFont(new Font("SansSerif", Font.PLAIN, 16));
                 gbc.gridy = 1;
                 add(wordField, gbc);
 
-                // Preview label
+
                 JLabel previewLabel = new JLabel("Preview will appear here");
                 previewLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
                 previewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -151,7 +148,7 @@ public class menu {
                 gbc.gridy = 2;
                 add(previewLabel, gbc);
 
-                // Buttons
+
                 JButton boldBtn      = new JButton("Bold");
                 JButton italicBtn    = new JButton("Italic");
                 JButton boldItlcBtn  = new JButton("Bold-Italic");
@@ -168,7 +165,7 @@ public class menu {
                 gbc.gridy = 3;
                 add(btnPanel, gbc);
 
-                // ── Helper to apply style ────────────────────────
+
                 Runnable applyBold = () -> {
                     String text = wordField.getText();
                     previewLabel.setFont(new Font("SansSerif", Font.BOLD, 18));
@@ -185,7 +182,7 @@ public class menu {
                     previewLabel.setText(text.isEmpty() ? "Preview will appear here" : text);
                 };
 
-                // ── Actions ──────────────────────────────────────
+
                 boldBtn.addActionListener(e -> applyBold.run());
                 italicBtn.addActionListener(e -> applyItalic.run());
                 boldItlcBtn.addActionListener(e -> applyBoldItalic.run());
@@ -255,7 +252,7 @@ public class menu {
             }
         }
 
-        // ─── Individual Converter Window ──────────────────────────
+
         static class Lab3Converter extends JDialog {
 
             Lab3Converter(JFrame parent, String title, String convType) {
@@ -294,7 +291,7 @@ public class menu {
                 gbc.gridy = 3;
                 add(btnPanel, gbc);
 
-                // ── Actions ──────────────────────────────────────
+
                 convertBtn.addActionListener(e -> {
                     try {
                         double val = Double.parseDouble(inputField.getText().trim());
@@ -344,7 +341,7 @@ public class menu {
 
         static class Lab4 extends JFrame {
 
-            // Menu data
+
             static final String[] COMBO_NAMES = {
                     "Combo A – Burger + Fries + Drink",
                     "Combo B – Chicken + Rice + Drink",
@@ -353,20 +350,20 @@ public class menu {
             };
             static final double[] COMBO_PRICES = {120.00, 135.00, 110.00, 150.00};
 
-            // Order state
+
             ArrayList<int[]> order = new ArrayList<>(); // [comboIndex, qty]
 
-            // ── UI references ─────────────────────────────────────
+
             JPanel    mainPanel;
             CardLayout cards;
 
-            // Combo-selection card
+
             JList<String>   comboList;
             JTextField      qtyField;
             JLabel          qtyLabel;
             JTextArea       orderSummary;
 
-            // Payment card
+
             JLabel          billLabel;
             JTextField      paymentField;
             JLabel          changeLabel;
@@ -388,7 +385,7 @@ public class menu {
                 setVisible(true);
             }
 
-            // ── Combo-selection card ──────────────────────────────
+
             private JPanel buildMenuCard(JFrame parent) {
                 JPanel p = new JPanel(new BorderLayout(8, 8));
                 p.setBorder(BorderFactory.createEmptyBorder(12, 14, 12, 14));
@@ -397,7 +394,6 @@ public class menu {
                 title.setFont(title.getFont().deriveFont(Font.BOLD, 16f));
                 p.add(title, BorderLayout.NORTH);
 
-                // Combo list with prices
                 DefaultListModel<String> model = new DefaultListModel<>();
                 for (int i = 0; i < COMBO_NAMES.length; i++) {
                     model.addElement(String.format("%-42s ₱%.2f", COMBO_NAMES[i], COMBO_PRICES[i]));
@@ -407,7 +403,7 @@ public class menu {
                 comboList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 p.add(new JScrollPane(comboList), BorderLayout.CENTER);
 
-                // Bottom section
+
                 JPanel bottom = new JPanel(new GridBagLayout());
                 GridBagConstraints g = new GridBagConstraints();
                 g.insets = new Insets(4, 6, 4, 6);
@@ -425,7 +421,7 @@ public class menu {
                 g.gridx = 2; g.weightx = 0;
                 bottom.add(addBtn, g);
 
-                // Order summary
+
                 orderSummary = new JTextArea(6, 35);
                 orderSummary.setEditable(false);
                 orderSummary.setFont(new Font("Monospaced", Font.PLAIN, 12));
@@ -433,7 +429,7 @@ public class menu {
                 g.gridx = 0; g.gridy = 1; g.gridwidth = 3; g.weightx = 1;
                 bottom.add(new JScrollPane(orderSummary), g);
 
-                // Action buttons
+
                 JButton checkoutBtn = new JButton("Proceed to Payment");
                 JButton clearOrderBtn = new JButton("Clear Order");
                 JButton exitBtn     = new JButton("Exit");
@@ -448,7 +444,7 @@ public class menu {
 
                 p.add(bottom, BorderLayout.SOUTH);
 
-                // ── Actions ──────────────────────────────────────
+
                 addBtn.addActionListener(e -> {
                     int idx = comboList.getSelectedIndex();
                     if (idx < 0) {
@@ -510,7 +506,6 @@ public class menu {
                 orderSummary.setText(sb.toString());
             }
 
-            // ── Payment card ──────────────────────────────────────
             private JPanel buildPaymentCard() {
                 JPanel p = new JPanel(new GridBagLayout());
                 p.setBorder(BorderFactory.createEmptyBorder(16, 20, 16, 20));
@@ -553,7 +548,7 @@ public class menu {
                 g.gridy = 4;
                 p.add(changeLabel, g);
 
-                // ── Actions ──────────────────────────────────────
+
                 payBtn.addActionListener(e -> {
                     double total = computeTotal();
                     double payment;
