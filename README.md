@@ -1,0 +1,1980 @@
+[Cs-Electronics.html](https://github.com/user-attachments/files/30709769/Cs-Electronics.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS Electronics Powered by Cyrus Technology Ver. 2.0</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+header{
+    background:#0056b3;
+    color:white;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+}
+
+header h1{
+    font-size:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:yellow;
+}
+
+.hero{
+    background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+    url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80');
+    background-size:cover;
+    background-position:center;
+    color:white;
+    text-align:center;
+    padding:120px 20px;
+}
+
+.hero h2{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.btn{
+    background:#ffcc00;
+    color:black;
+    padding:15px 35px;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:white;
+}
+
+/* ===== Booking Section Styles ===== */
+.booking{
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    padding:40px;
+    max-width:800px;
+    margin:0 auto;
+}
+
+.booking form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.booking .full{
+    grid-column:1 / -1;
+}
+
+.booking label{
+    display:block;
+    font-weight:bold;
+    color:#0056b3;
+    margin-bottom:8px;
+    font-size:15px;
+}
+
+.booking input,
+.booking select,
+.booking textarea{
+    width:100%;
+    padding:12px 15px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    font-size:16px;
+    transition:border-color .3s;
+}
+
+.booking input:focus,
+.booking select:focus,
+.booking textarea:focus{
+    outline:none;
+    border-color:#0056b3;
+}
+
+.booking textarea{
+    resize:vertical;
+    min-height:80px;
+}
+
+.booking .submit-btn{
+    background:#0056b3;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:background .3s;
+    grid-column:1 / -1;
+    width:100%;
+}
+
+.booking .submit-btn:hover{
+    background:#003366;
+}
+
+/* ===== Success Message Styles ===== */
+.success-message{
+    display:none;
+    background:#e8f8e8;
+    border:3px solid #28a745;
+    border-radius:12px;
+    padding:30px;
+    text-align:center;
+    margin-top:25px;
+}
+
+.success-message.show{
+    display:block;
+    animation:fadeIn .5s ease;
+}
+
+.success-message h3{
+    color:#28a745;
+    font-size:26px;
+    margin-bottom:12px;
+}
+
+.success-message p{
+    font-size:16px;
+    margin:6px 0;
+    color:#333;
+}
+
+.success-message .summary{
+    background:white;
+    border-radius:8px;
+    padding:15px;
+    margin-top:15px;
+    text-align:left;
+    display:inline-block;
+}
+
+.success-message .ref{
+    font-weight:bold;
+    color:#0056b3;
+    font-size:18px;
+}
+
+/* ===== Auth Modal Styles ===== */
+.auth-overlay{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+}
+
+.auth-overlay.show{
+    display:flex;
+}
+
+.auth-modal{
+    background:white;
+    border-radius:15px;
+    padding:35px;
+    max-width:400px;
+    width:90%;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    position:relative;
+    text-align:center;
+}
+
+.auth-modal h3{
+    color:#0056b3;
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.auth-modal input{
+    width:100%;
+    padding:12px 15px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+    margin:8px 0;
+    transition:border-color .3s;
+}
+
+.auth-modal input:focus{
+    outline:none;
+    border-color:#0056b3;
+}
+
+.auth-btn{
+    background:#0056b3;
+    color:white;
+    border:none;
+    width:100%;
+    padding:14px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:12px;
+    transition:background .3s;
+}
+
+.auth-btn:hover{
+    background:#003366;
+}
+
+.auth-close{
+    position:absolute;
+    top:10px;
+    right:15px;
+    background:none;
+    border:none;
+    font-size:22px;
+    cursor:pointer;
+    color:#888;
+}
+
+.auth-close:hover{
+    color:#333;
+}
+
+.auth-switch-text{
+    font-size:14px;
+    margin:5px 0 10px;
+    color:#555;
+}
+
+.auth-switch-text a{
+    color:#0056b3;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.auth-error{
+    color:#dc3545;
+    font-size:14px;
+    margin-top:10px;
+    min-height:18px;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(-10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@media(max-width:768px){
+    .booking form{
+        grid-template-columns:1fr;
+    }
+    .booking .submit-btn{
+        grid-column:1;
+    }
+}
+
+section{
+    padding:60px 10%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    color:#0056b3;
+    font-size:35px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.card h3{
+    color:#0056b3;
+    margin-bottom:15px;
+}
+
+.promo{
+    background:#0056b3;
+    color:white;
+    text-align:center;
+    border-radius:15px;
+    padding:50px;
+}
+
+.promo h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.contact{
+    background:white;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    padding:40px;
+}
+
+.contact p{
+    margin:15px 0;
+    font-size:18px;
+}
+
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+/* ===== Tracking Section Styles ===== */
+.tracking{
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    padding:40px;
+    max-width:800px;
+    margin:0 auto;
+}
+
+.tracking input{
+    width:100%;
+    padding:12px 15px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    font-size:16px;
+    margin-bottom:15px;
+}
+
+.tracking input:focus{
+    outline:none;
+    border-color:#0056b3;
+}
+
+.track-result{
+    display:none;
+    margin-top:25px;
+    padding:25px;
+    background:#f8f9fa;
+    border-radius:12px;
+    border:2px solid #ddd;
+}
+
+.track-result.show{
+    display:block;
+    animation:fadeIn .5s ease;
+}
+
+.track-result h3{
+    color:#0056b3;
+    margin-bottom:15px;
+}
+
+.track-result .status-badge{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:20px;
+    font-weight:bold;
+    color:white;
+    margin:5px 0;
+}
+
+.status-pending{ background:#ffc107; color:#333; }
+.status-confirmed{ background:#17a2b8; }
+.status-repair{ background:#fd7e14; }
+.status-completed{ background:#28a745; }
+.status-cancelled{ background:#dc3545; }
+
+.payment-badge{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:15px;
+    font-weight:bold;
+    font-size:13px;
+}
+.payment-unpaid{ background:#dc3545; color:white; }
+.payment-paid{ background:#28a745; color:white; }
+
+/* Repair progress bar */
+.repair-progress{
+    margin-top:20px;
+}
+.repair-progress h4{
+    color:#0056b3;
+    margin-bottom:10px;
+}
+.progress-steps{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+.progress-step{
+    flex:1;
+    min-width:120px;
+    text-align:center;
+    padding:10px;
+    border-radius:8px;
+    background:#e9ecef;
+    color:#666;
+    font-size:13px;
+    font-weight:bold;
+}
+.progress-step.active{
+    background:#0056b3;
+    color:white;
+}
+.progress-step.done{
+    background:#28a745;
+    color:white;
+}
+
+/* ===== Admin Dashboard Styles ===== */
+.admin-nav{
+    display:none;
+}
+.admin-section{
+    padding:40px 10%;
+    background:#f0f2f5;
+}
+.admin-stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+    margin-bottom:30px;
+}
+.stat-card{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+.stat-card h3{
+    font-size:14px;
+    color:#666;
+    margin-bottom:8px;
+}
+.stat-card .stat-number{
+    font-size:32px;
+    font-weight:bold;
+    color:#0056b3;
+}
+.admin-table-wrap{
+    background:white;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    overflow-x:auto;
+    padding:10px;
+}
+.admin-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:900px;
+}
+.admin-table th{
+    background:#0056b3;
+    color:white;
+    padding:12px;
+    text-align:left;
+    font-size:14px;
+}
+.admin-table td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+    vertical-align:top;
+}
+.admin-table tr:hover{
+    background:#f8f9fa;
+}
+.admin-table select{
+    padding:6px;
+    border:2px solid #ddd;
+    border-radius:6px;
+    font-size:13px;
+}
+.admin-btn{
+    background:#0056b3;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:bold;
+    cursor:pointer;
+    margin:3px;
+}
+.admin-btn:hover{ background:#003366; }
+.admin-btn-danger{ background:#dc3545; }
+.admin-btn-danger:hover{ background:#bd2130; }
+.admin-btn-success{ background:#28a745; }
+.admin-btn-success:hover{ background:#218838; }
+.admin-empty{
+    text-align:center;
+    color:#888;
+    padding:30px;
+}
+
+@media(max-width:768px){
+    .progress-steps{
+        flex-direction:column;
+    }
+    .admin-section{
+        padding:30px 5%;
+    }
+}
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+}
+
+nav{
+margin-top:15px;
+}
+
+.hero h2{
+font-size:35px;
+}
+
+}
+
+/* ===== Live Chat Widget Styles ===== */
+.chat-widget{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    z-index:1500;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.chat-toggle{
+    background:#0056b3;
+    color:white;
+    border:none;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    font-size:28px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+    transition:transform .2s;
+}
+.chat-toggle:hover{
+    transform:scale(1.08);
+}
+.chat-box{
+    display:none;
+    position:absolute;
+    bottom:75px;
+    right:0;
+    width:330px;
+    max-width:90vw;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    overflow:hidden;
+    flex-direction:column;
+}
+.chat-box.show{
+    display:flex;
+    animation:fadeIn .3s ease;
+}
+.chat-header{
+    background:#0056b3;
+    color:white;
+    padding:15px;
+    font-weight:bold;
+    font-size:16px;
+}
+.chat-header .chat-close{
+    float:right;
+    background:none;
+    border:none;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+.chat-messages{
+    height:220px;
+    overflow-y:auto;
+    padding:12px;
+    background:#f8f9fa;
+}
+.chat-msg{
+    margin-bottom:10px;
+    max-width:80%;
+    padding:8px 12px;
+    border-radius:12px;
+    font-size:14px;
+    clear:both;
+}
+.chat-msg.customer{
+    background:#0056b3;
+    color:white;
+    float:right;
+    border-bottom-right-radius:2px;
+}
+.chat-msg.admin{
+    background:#e9ecef;
+    color:#333;
+    float:left;
+    border-bottom-left-radius:2px;
+}
+.chat-msg .chat-name{
+    display:block;
+    font-size:11px;
+    font-weight:bold;
+    opacity:.8;
+    margin-bottom:2px;
+}
+.chat-msg .chat-time{
+    display:block;
+    font-size:10px;
+    opacity:.7;
+    margin-top:3px;
+}
+.chat-input{
+    display:flex;
+    border-top:1px solid #ddd;
+    padding:8px;
+    background:white;
+}
+.chat-input input{
+    flex:1;
+    border:2px solid #ddd;
+    border-radius:20px;
+    padding:8px 12px;
+    font-size:14px;
+    margin-right:8px;
+}
+.chat-input input:focus{
+    outline:none;
+    border-color:#0056b3;
+}
+.chat-input button{
+    background:#0056b3;
+    color:white;
+    border:none;
+    border-radius:20px;
+    padding:8px 16px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:14px;
+}
+.chat-input button:hover{
+    background:#003366;
+}
+.chat-login-hint{
+    padding:12px;
+    text-align:center;
+    font-size:13px;
+    color:#888;
+    background:#fff;
+    border-top:1px solid #eee;
+}
+
+/* ===== Report / Feedback Form Styles ===== */
+.report-section{
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    padding:40px;
+    max-width:800px;
+    margin:0 auto;
+}
+.report-section form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+.report-section .full{
+    grid-column:1 / -1;
+}
+.report-section label{
+    display:block;
+    font-weight:bold;
+    color:#0056b3;
+    margin-bottom:8px;
+    font-size:15px;
+}
+.report-section input,
+.report-section select,
+.report-section textarea{
+    width:100%;
+    padding:12px 15px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+    transition:border-color .3s;
+}
+.report-section input:focus,
+.report-section select:focus,
+.report-section textarea:focus{
+    outline:none;
+    border-color:#0056b3;
+}
+.report-section textarea{
+    resize:vertical;
+    min-height:90px;
+}
+.report-section .submit-btn{
+    background:#0056b3;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:background .3s;
+    grid-column:1 / -1;
+    width:100%;
+}
+.report-section .submit-btn:hover{
+    background:#003366;
+}
+.report-success{
+    display:none;
+    background:#e8f8e8;
+    border:3px solid #28a745;
+    border-radius:12px;
+    padding:25px;
+    text-align:center;
+    margin-top:25px;
+}
+.report-success.show{
+    display:block;
+    animation:fadeIn .5s ease;
+}
+.report-success h3{
+    color:#28a745;
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+@media(max-width:768px){
+    .report-section form{
+        grid-template-columns:1fr;
+    }
+    .report-section .submit-btn{
+        grid-column:1;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<h1>CS Electronics</h1>
+<h4>Powered by Cyrus Technology | Ver. 2.0</h4>
+
+<nav>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#booking">Booking</a>
+<a href="#track">Track</a>
+<a href="#trackReport">Track Report</a>
+<a href="#report">Report</a>
+<a href="#promo">Promo</a>
+<a href="#contact">Contact</a>
+<a href="#" id="loginNavLink">Login</a>
+<a href="#" id="registerNavLink">Register</a>
+<a href="#" id="userNavLink" style="display:none;"></a>
+<a href="admin-dashboard.html" id="adminNavLink">Admin</a>
+<a href="#" id="logoutNavLink" style="display:none;">Logout</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h2>Fast & Reliable Laptop and Computer Repair</h2>
+
+<p>Professional Repair Services at Affordable Prices</p>
+
+<a href="#booking" class="btn">Book Now</a>
+
+</section>
+
+<section id="about">
+
+<h2 class="section-title">About Us</h2>
+
+<p style="text-align:center;font-size:18px;max-width:900px;margin:auto;">
+Welcome to <strong>Cs Electronics</strong>. We specialize in repairing laptops and desktop computers. Whether your device is broken, slow, freezing, or hanging, our experienced technicians are ready to help. We provide affordable repair services with quality workmanship and customer satisfaction.
+</p>
+
+</section>
+
+<section id="services">
+
+<h2 class="section-title">Our Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>💻 Laptop Repair</h3>
+<p>Repair broken laptops including motherboard issues, charging problems, screen replacement, keyboard repair, and more.</p>
+</div>
+
+<div class="card">
+<h3>🖥 Computer Repair</h3>
+<p>Desktop computer diagnostics, hardware replacement, software troubleshooting, upgrades, and maintenance.</p>
+</div>
+
+<div class="card">
+<h3>⚡ Speed Optimization</h3>
+<p>Fix slow-running, hanging, freezing, or lagging laptops and computers. We optimize your system for better performance.</p>
+</div>
+
+<div class="card">
+<h3>🏠 Home Service</h3>
+<p>Can't visit our shop? No problem! We offer home servicing for your convenience.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="promo">
+
+<div class="promo">
+
+<h2>🎓 Student Promo</h2>
+
+<h3>Special Discount for Students!</h3>
+
+<p style="margin-top:20px;font-size:20px;">
+Present your valid Student ID and enjoy exclusive discounts on selected repair services. and enjoy the 35% off.
+</p>
+
+</div>
+
+</section>
+
+<section id="booking">
+
+<h2 class="section-title">Book a Repair</h2>
+
+<div class="booking">
+
+<p style="text-align:center;margin-bottom:25px;font-size:17px;">
+Schedule your repair appointment below. Choose your preferred <strong>date</strong>, <strong>time</strong>, and provide your <strong>address</strong>.
+</p>
+
+<form id="bookingForm">
+
+<div>
+<label for="name">Full Name *</label>
+<input type="text" id="name" name="name" placeholder="Enter your full name" required>
+</div>
+
+<div>
+<label for="phone">Phone Number *</label>
+<input type="tel" id="phone" name="phone" placeholder="e.g. +63 912 345 6789" required>
+</div>
+
+<div>
+<label for="service">Service Type *</label>
+<select id="service" name="service" required>
+<option value="">-- Select a service --</option>
+<option value="Laptop Repair">💻 Laptop Repair (₱299)</option>
+<option value="Computer Repair">🖥 Computer Repair (₱299)</option>
+<option value="Speed Optimization">⚡ Speed Optimization (₱199)</option>
+<option value="Home Service">🏠 Home Service (₱399)</option>
+</select>
+</div>
+
+<div>
+<label for="discount">Discount Type</label>
+<select id="discount" name="discount">
+<option value="None">None (No discount)</option>
+<option value="Student">🎓 Student (35% off)</option>
+<option value="PWD/Senior">♿ PWD / 👵 Senior (25% off)</option>
+</select>
+</div>
+
+<div>
+<label for="idUpload">Valid ID Picture (Required for discount)</label>
+<input type="file" id="idUpload" accept="image/*">
+</div>
+
+<div>
+<label for="date">Preferred Date *</label>
+<input type="date" id="date" name="date" required>
+</div>
+
+<div>
+<label for="time">Preferred Time *</label>
+<input type="time" id="time" name="time" required>
+</div>
+
+<div>
+<label for="address">Address *</label>
+<input type="text" id="address" name="address" placeholder="Enter your complete address" required>
+</div>
+
+<div>
+<label for="payment">Payment Method *</label>
+<select id="payment" name="payment" required>
+<option value="">-- Select payment method --</option>
+<option value="Cash">💵 Cash (Pay on arrival)</option>
+<option value="GCash">📱 GCash</option>
+<option value="Maya">📱 Maya</option>
+<option value="Bank Transfer">🏦 Bank Transfer</option>
+</select>
+</div>
+
+<div class="full">
+<label for="notes">Additional Notes (Optional)</label>
+<textarea id="notes" name="notes" placeholder="Describe your device problem, model, etc."></textarea>
+</div>
+
+<button type="submit" class="submit-btn">✅ Confirm Booking</button>
+
+</form>
+
+<div class="success-message" id="successMessage">
+
+<h3>✅ Successfully Booked!</h3>
+
+<p>Your appointment has been scheduled. We will contact you to confirm your booking.</p>
+
+<div class="summary">
+<p><strong>Booking Reference:</strong> <span class="ref" id="refNumber"></span></p>
+<p><strong>Service:</strong> <span id="summaryService"></span></p>
+<p><strong>Date:</strong> <span id="summaryDate"></span></p>
+<p><strong>Time:</strong> <span id="summaryTime"></span></p>
+<p><strong>Address:</strong> <span id="summaryAddress"></span></p>
+<p><strong>Payment Method:</strong> <span id="summaryPayment"></span></p>
+<p><strong>Service Price:</strong> <span id="summaryPrice"></span></p>
+<p><strong>Discount:</strong> <span id="summaryDiscount"></span></p>
+<p><strong>Total Price:</strong> <span id="summaryTotal"></span></p>
+</div>
+
+<div id="paymentInstructions"></div>
+
+<p style="margin-top:15px;font-weight:bold;color:#dc3545;">📸 Please take a screenshot of your booking information above for your reference.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="track">
+
+<h2 class="section-title">Track Your Booking</h2>
+
+<div class="tracking">
+
+<p style="text-align:center;margin-bottom:25px;font-size:17px;">
+Enter your <strong>Booking Reference</strong> (e.g. CS-123456) to check the status of your repair.
+</p>
+
+<input type="text" id="trackRef" placeholder="Enter your booking reference (e.g. CS-123456)">
+
+<button class="auth-btn" id="trackBtn">🔍 Track Booking</button>
+
+<div class="track-result" id="trackResult">
+
+<h3>📋 Booking Details</h3>
+
+<div id="trackDetails"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="report">
+
+<h2 class="section-title">📢 Report / Feedback</h2>
+
+<div class="report-section">
+
+<p style="text-align:center;margin-bottom:25px;font-size:17px;">
+Have an issue with our service or technician? Let us know! Your feedback helps us improve.
+</p>
+
+<form id="reportForm">
+
+<div>
+<label for="repType">Report Type *</label>
+<select id="repType" required>
+<option value="">-- Select type --</option>
+<option value="Feedback">⭐ Feedback</option>
+<option value="Complaint">⚠️ Complaint</option>
+<option value="Technician Report">🔧 Technician Report</option>
+</select>
+</div>
+
+<div>
+<label for="repRef">Booking Reference</label>
+<input type="text" id="repRef" placeholder="e.g. CS-123456 (optional)">
+</div>
+
+<div>
+<label for="repTechnician">Technician Name</label>
+<input type="text" id="repTechnician" placeholder="e.g. Kuya Simon (optional)">
+</div>
+
+<div>
+<label for="repRating">Rating (1-5)</label>
+<select id="repRating">
+<option value="">-- Select rating --</option>
+<option value="5">⭐⭐⭐⭐⭐ Excellent (5)</option>
+<option value="4">⭐⭐⭐⭐ Good (4)</option>
+<option value="3">⭐⭐⭐ Average (3)</option>
+<option value="2">⭐⭐ Poor (2)</option>
+<option value="1">⭐ Terrible (1)</option>
+</select>
+</div>
+
+<div class="full">
+<label for="repMessage">Your Message / Feedback *</label>
+<textarea id="repMessage" placeholder="Please describe your experience, concern, or feedback in detail..." required></textarea>
+</div>
+
+<button type="submit" class="submit-btn">📨 Submit Report / Feedback</button>
+
+</form>
+
+<div class="report-success" id="reportSuccess">
+<h3>✅ Thank You!</h3>
+<p>Your report/feedback has been submitted successfully. The admin will review it as soon as possible.</p>
+<p style="margin-top:12px;font-weight:bold;color:#0056b3;">🔖 Your Tracking Number: <span id="reportTrackingNumber">—</span></p>
+<p style="font-size:14px;color:#888;">Save this tracking number so you can check the status of your report.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="trackReport">
+
+<h2 class="section-title">📋 Track Your Report</h2>
+
+<div class="tracking">
+
+<p style="text-align:center;margin-bottom:25px;font-size:17px;">
+Enter your <strong>Report Tracking Number</strong> to check the status of your report / feedback.
+</p>
+
+<input type="text" id="trackRepNum" placeholder="Enter your report tracking number">
+
+<button class="auth-btn" id="trackRepBtn">🔍 Track Report</button>
+
+<div class="track-result" id="trackRepResult">
+
+<h3>📋 Report Details</h3>
+
+<div id="trackRepDetails"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="section-title">Contact Us</h2>
+
+<div class="contact">
+
+<p><strong>📍 Address:</strong> CSJDM, Bulacan </p>
+
+<p><strong>📞 Phone:</strong> +63 9454782730 </p>
+
+<p><strong>📧 Email:</strong> kuyasaimon.inc@gmail.com</p>
+
+<p><strong>🕒 Business Hours:</strong> Monday,Wednesday,Friday | 8:00 AM - 12:00 PM</p>
+
+<p><strong>🏠 Home Service Available!(Only Around San Jose Delmonte City Bulacan)</strong></p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 CS Electronics | Powered by Cyrus Technology | Ver. 2.0</p>
+
+</footer>
+
+<!-- ===== Live Chat Widget ===== -->
+<div class="chat-widget">
+<button class="chat-toggle" id="chatToggle" title="Live Chat">💬</button>
+<div class="chat-box" id="chatBox">
+<div class="chat-header">
+💬 Live Chat
+<button class="chat-close" id="chatClose">✕</button>
+</div>
+<div class="chat-messages" id="chatMessages"></div>
+<div class="chat-input">
+<input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off">
+<button id="chatSend">Send</button>
+</div>
+</div>
+</div>
+
+<!-- ===== Login / Register Modal ===== -->
+<div class="auth-overlay" id="authOverlay">
+
+<div class="auth-modal">
+
+<button class="auth-close" id="authClose">✕</button>
+
+<!-- Login View -->
+<div id="loginView">
+<h3>🔐 Login</h3>
+<p class="auth-switch-text">Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+<input type="email" id="loginEmail" placeholder="Email address" required>
+<input type="password" id="loginPassword" placeholder="Password" required>
+<button class="auth-btn" id="loginBtn">Login</button>
+<p class="auth-error" id="loginError"></p>
+</div>
+
+<!-- Register View -->
+<div id="registerView" style="display:none;">
+<h3>📝 Create an Account</h3>
+<p class="auth-switch-text">Already have an account? <a href="#" id="showLogin">Login here</a></p>
+<input type="text" id="regName" placeholder="Full name" required>
+<input type="email" id="regEmail" placeholder="Email address" required>
+<input type="tel" id="regPhone" placeholder="Phone number (optional)">
+<input type="password" id="regPassword" placeholder="Password (min 6 characters)" required>
+<button class="auth-btn" id="registerBtn">Register</button>
+<p class="auth-error" id="regError"></p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+// ===== Booking Form Automation =====
+
+document.getElementById('bookingForm').addEventListener('submit', function(event){
+
+event.preventDefault();
+
+// Require login before booking
+var currentUser = getCurrentUser();
+if(!currentUser){
+alert('Please login or register first before booking.');
+openAuthModal('login');
+return;
+}
+
+// Get form values
+var name = document.getElementById('name').value.trim();
+var phone = document.getElementById('phone').value.trim();
+var service = document.getElementById('service').value;
+var date = document.getElementById('date').value;
+var time = document.getElementById('time').value;
+var address = document.getElementById('address').value.trim();
+var payment = document.getElementById('payment').value;
+var discount = document.getElementById('discount').value;
+var idUpload = document.getElementById('idUpload');
+var notes = document.getElementById('notes').value.trim();
+
+// Validate required fields
+if(!name || !phone || !service || !date || !time || !address || !payment){
+alert('Please fill in all required fields (Name, Phone, Service, Date, Time, Address, and Payment Method).');
+return;
+}
+
+// Validate discount requires ID picture
+if(discount !== 'None' && !idUpload.files || (discount !== 'None' && idUpload.files.length === 0)){
+alert('Please attach a picture of your valid ID to get the discount.');
+return;
+}
+
+// Calculate price
+var prices = {
+'Laptop Repair': 299,
+'Computer Repair': 299,
+'Speed Optimization': 199,
+'Home Service': 399
+};
+var basePrice = prices[service] || 0;
+var discountRate = 0;
+if(discount === 'Student'){ discountRate = 0.35; }
+else if(discount === 'PWD/Senior'){ discountRate = 0.25; }
+var discountAmount = basePrice * discountRate;
+var totalPrice = basePrice - discountAmount;
+
+// Format the date nicely
+var formattedDate = formatDate(date);
+
+// Format the time to 12-hour format
+var formattedTime = formatTime(time);
+
+// Generate a booking reference number
+var ref = 'CS-' + Date.now().toString().slice(-6);
+
+// Fill in the success summary
+document.getElementById('refNumber').textContent = ref;
+document.getElementById('summaryService').textContent = service + ' (₱' + basePrice + ')';
+document.getElementById('summaryDate').textContent = formattedDate;
+document.getElementById('summaryTime').textContent = formattedTime;
+document.getElementById('summaryAddress').textContent = address;
+document.getElementById('summaryPayment').textContent = payment;
+document.getElementById('summaryPrice').textContent = '₱' + basePrice + '.00';
+document.getElementById('summaryDiscount').textContent = (discount === 'None' ? 'None' : discount + ' (' + Math.round(discountRate*100) + '% off - ₱' + discountAmount.toFixed(2) + ')');
+document.getElementById('summaryTotal').textContent = '₱' + totalPrice.toFixed(2);
+
+// Show payment instructions
+var payInstr = document.querySelector('#paymentInstructions');
+if(payment === 'GCash'){
+payInstr.innerHTML = '<p style="margin-top:12px;font-weight:bold;color:#0056b3;">📱 To pay via GCash, send payment to <strong>0945 478 2730</strong> (CS Electronics). Then send your payment screenshot to our email.</p>';
+} else if(payment === 'Maya'){
+payInstr.innerHTML = '<p style="margin-top:12px;font-weight:bold;color:#0056b3;">📱 To pay via Maya, send payment to <strong>0945 478 2730</strong> (CS Electronics). Then send your payment screenshot to our email.</p>';
+} else if(payment === 'Bank Transfer'){
+payInstr.innerHTML = '<p style="margin-top:12px;font-weight:bold;color:#0056b3;">🏦 For bank transfer, contact us at <strong>+63 9454782730</strong> for bank details. Then send your transfer screenshot to our email.</p>';
+} else {
+payInstr.innerHTML = '<p style="margin-top:12px;font-weight:bold;color:#0056b3;">💵 Please pay in cash when we arrive or when you pick up your device.</p>';
+}
+
+// Disable the button while sending
+var submitBtn = document.querySelector('.submit-btn');
+var originalBtnText = submitBtn.textContent;
+submitBtn.textContent = '⏳ Sending...';
+submitBtn.disabled = true;
+
+// Send booking details (including reference number) to email via FormSubmit
+fetch('https://formsubmit.co/ajax/kuyasaimon.inc@gmail.com', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+'Accept': 'application/json'
+},
+    body: JSON.stringify({
+    Booking_Reference: ref,
+    Customer_Email: currentUser.email,
+    email: currentUser.email,
+    _autoresponse: 'Dear ' + name + ',\n\nYour repair booking with CS Electronics has been confirmed!\n\nBooking Reference: ' + ref + '\nService: ' + service + '\nPreferred Date: ' + formattedDate + '\nPreferred Time: ' + formattedTime + '\nAddress: ' + address + '\nNotes: ' + (notes || 'N/A') + '\n\nIMPORTANT: Please take a screenshot of this booking confirmation email and send it to our email (kuyasaimon.inc@gmail.com) for verification purposes.\n\nWe will contact you shortly to confirm your appointment. Please keep your Booking Reference number for reference.\n\nThank you,\nCS Electronics Team',
+    Full_Name: name,
+    Phone_Number: phone,
+    Service: service,
+    Preferred_Date: formattedDate,
+    Preferred_Time: formattedTime,
+    Address: address,
+    Notes: notes || 'N/A'
+    })
+})
+.then(response => {
+if(!response.ok){
+throw new Error('Network response was not ok');
+}
+return response.json();
+})
+.then(data => {
+
+// Save the booking to localStorage for tracking & admin dashboard
+var booking = {
+ref: ref,
+name: name,
+phone: phone,
+email: currentUser.email,
+service: service,
+date: formattedDate,
+time: formattedTime,
+address: address,
+payment: payment,
+paymentStatus: 'Unpaid',
+discount: discount,
+discountStatus: (discount === 'None' ? 'Approved' : 'Pending Approval'),
+basePrice: basePrice,
+discountAmount: discountAmount,
+totalPrice: totalPrice,
+notes: notes,
+status: 'Pending',
+repairStage: 'Not Started',
+createdAt: new Date().toISOString()
+};
+var bookings = getBookings();
+bookings.push(booking);
+saveBookings(bookings);
+
+// Store the ID image separately (if uploaded) as base64 with the booking
+if(idUpload.files && idUpload.files.length > 0){
+(function(file, refNum){
+    var reader = new FileReader();
+    reader.onload = function(e){
+        var all = getBookings();
+        for(var i = 0; i < all.length; i++){
+            if(all[i].ref === refNum){
+                all[i].idImage = e.target.result;
+                break;
+            }
+        }
+        saveBookings(all);
+    };
+    reader.readAsDataURL(file);
+})(idUpload.files[0], ref);
+}
+
+// Show the success message
+var successMsg = document.getElementById('successMessage');
+successMsg.classList.add('show');
+
+// Scroll the success message into view
+successMsg.scrollIntoView({behavior:'smooth', block:'center'});
+
+// Reset the form
+document.getElementById('bookingForm').reset();
+
+// Alert the user to take a screenshot
+setTimeout(function(){
+alert('📸 Please take a screenshot of your booking information and send it to our email (kuyasaimon.inc@gmail.com) for confirmation. Thank you!');
+}, 500);
+
+})
+.catch(error => {
+
+alert('There was an error sending your booking. Please try again.');
+
+})
+.finally(function(){
+submitBtn.textContent = originalBtnText;
+submitBtn.disabled = false;
+});
+
+});
+
+// ===== Authentication (Login / Register) =====
+
+// Storage keys
+var USERS_KEY = 'cs_users';
+var CURRENT_USER_KEY = 'cs_currentUser';
+
+function getUsers(){
+    var data = localStorage.getItem(USERS_KEY);
+    return data ? JSON.parse(data) : [];
+}
+
+function saveUsers(users){
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+function getCurrentUser(){
+    var data = localStorage.getItem(CURRENT_USER_KEY);
+    return data ? JSON.parse(data) : null;
+}
+
+function setCurrentUser(user){
+    if(user){
+        localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+    } else {
+        localStorage.removeItem(CURRENT_USER_KEY);
+    }
+}
+
+function isValidEmail(email){
+    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+function openAuthModal(view){
+    document.getElementById('authOverlay').classList.add('show');
+    document.getElementById('loginError').textContent = '';
+    document.getElementById('regError').textContent = '';
+    if(view === 'register'){
+        document.getElementById('loginView').style.display = 'none';
+        document.getElementById('registerView').style.display = 'block';
+    } else {
+        document.getElementById('loginView').style.display = 'block';
+        document.getElementById('registerView').style.display = 'none';
+    }
+}
+
+function closeAuthModal(){
+    document.getElementById('authOverlay').classList.remove('show');
+}
+
+function updateNav(){
+    var user = getCurrentUser();
+    var loginLink = document.getElementById('loginNavLink');
+    var registerLink = document.getElementById('registerNavLink');
+    var userLink = document.getElementById('userNavLink');
+    var logoutLink = document.getElementById('logoutNavLink');
+    if(user){
+        loginLink.style.display = 'none';
+        registerLink.style.display = 'none';
+        userLink.style.display = 'inline';
+        logoutLink.style.display = 'inline';
+        userLink.textContent = '👤 ' + user.name;
+        // Prefill booking form with account info
+        document.getElementById('name').value = user.name;
+        if(user.phone){
+            document.getElementById('phone').value = user.phone;
+        }
+    } else {
+        loginLink.style.display = 'inline';
+        registerLink.style.display = 'inline';
+        userLink.style.display = 'none';
+        logoutLink.style.display = 'none';
+    }
+}
+
+// Auth event bindings
+document.getElementById('authClose').addEventListener('click', closeAuthModal);
+
+document.getElementById('loginNavLink').addEventListener('click', function(e){
+    e.preventDefault();
+    openAuthModal('login');
+});
+
+document.getElementById('registerNavLink').addEventListener('click', function(e){
+    e.preventDefault();
+    openAuthModal('register');
+});
+
+document.getElementById('showRegister').addEventListener('click', function(e){
+    e.preventDefault();
+    openAuthModal('register');
+});
+
+document.getElementById('showLogin').addEventListener('click', function(e){
+    e.preventDefault();
+    openAuthModal('login');
+});
+
+// Close modal when clicking the dark overlay background
+document.getElementById('authOverlay').addEventListener('click', function(e){
+    if(e.target === this){
+        closeAuthModal();
+    }
+});
+
+// Register handler
+document.getElementById('registerBtn').addEventListener('click', function(){
+    var name = document.getElementById('regName').value.trim();
+    var email = document.getElementById('regEmail').value.trim();
+    var phone = document.getElementById('regPhone').value.trim();
+    var password = document.getElementById('regPassword').value;
+
+    var regError = document.getElementById('regError');
+    regError.textContent = '';
+
+    if(!name || !email || !password){
+        regError.textContent = 'Please fill in all required fields (Name, Email, Password).';
+        return;
+    }
+    if(password.length < 6){
+        regError.textContent = 'Password must be at least 6 characters long.';
+        return;
+    }
+    if(!isValidEmail(email)){
+        regError.textContent = 'Please enter a valid email address.';
+        return;
+    }
+
+    var users = getUsers();
+    var existing = users.filter(function(u){ return u.email === email; });
+    if(existing.length > 0){
+        regError.textContent = 'An account with this email already exists. Please login instead.';
+        return;
+    }
+
+    users.push({ name: name, email: email, phone: phone, password: password });
+    saveUsers(users);
+    setCurrentUser({ name: name, email: email, phone: phone });
+
+// Send new registered account details (including password) to owner email via FormSubmit
+    fetch('https://formsubmit.co/ajax/kuyasaimon.inc@gmail.com', {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+    Subject: 'Welcome to CS Electronics - Account Created',
+    email: email,
+    _autoresponse: 'Dear ' + name + ',\n\nThank you for registering with CS Electronics! Your account has been created successfully.\n\nYour Account Details:\nFull Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + (phone || 'N/A') + '\nPassword: ' + password + '\n\nIMPORTANT: Please take a screenshot of this registration confirmation email and send it to our email (kuyasaimon.inc@gmail.com) for verification purposes.\n\nPlease keep this information safe. You can now login and book a repair appointment.\n\nThank you,\nCS Electronics Team',
+    Account_Full_Name: name,
+    Account_Email_Username: email,
+    Account_Phone: phone || 'N/A',
+    Account_Password: password
+    })
+    })
+    .then(response => {
+    if(!response.ok){
+    throw new Error('Network response was not ok');
+    }
+    return response.json();
+    })
+    .catch(error => {
+    // Non-blocking: still let the user register even if the email fails
+    });
+
+    document.getElementById('regName').value = '';
+    document.getElementById('regEmail').value = '';
+    document.getElementById('regPhone').value = '';
+    document.getElementById('regPassword').value = '';
+
+    closeAuthModal();
+    updateNav();
+    alert('Registration successful! Welcome, ' + name + '!');
+});
+
+// Helper: format date from YYYY-MM-DD to a readable format
+function formatDate(dateStr){
+var parts = dateStr.split('-');
+if(parts.length !== 3) return dateStr;
+var months = ['January','February','March','April','May','June',
+'July','August','September','October','November','December'];
+var year = parts[0];
+var month = months[parseInt(parts[1],10) - 1];
+var day = parseInt(parts[2],10);
+return month + ' ' + day + ', ' + year;
+}
+
+// Helper: format time from 24-hour to 12-hour AM/PM
+function formatTime(timeStr){
+var parts = timeStr.split(':');
+var hour = parseInt(parts[0],10);
+var minute = parts[1];
+var ampm = hour >= 12 ? 'PM' : 'AM';
+hour = hour % 12;
+if(hour === 0) hour = 12;
+return hour + ':' + minute + ' ' + ampm;
+}
+
+// ===== Bookings Storage =====
+var BOOKINGS_KEY = 'cs_bookings';
+var ADMIN_KEY = 'cs_admin';
+
+function getBookings(){
+    var data = localStorage.getItem(BOOKINGS_KEY);
+    return data ? JSON.parse(data) : [];
+}
+
+function saveBookings(bookings){
+    localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings));
+}
+
+function getAdmin(){
+    var data = localStorage.getItem(ADMIN_KEY);
+    return data ? JSON.parse(data) : null;
+}
+
+function setAdmin(admin){
+    if(admin){
+        localStorage.setItem(ADMIN_KEY, JSON.stringify(admin));
+    } else {
+        localStorage.removeItem(ADMIN_KEY);
+    }
+}
+
+// ===== Admin Login =====
+var ADMIN_EMAIL = 'admin@cselectronics.com';
+var ADMIN_PASSWORD = 'admin123';
+var ADMIN_USERS_KEY = 'cs_admin_users';
+
+function getAdminUsers(){
+    var data = localStorage.getItem(ADMIN_USERS_KEY);
+    return data ? JSON.parse(data) : [];
+}
+
+function saveAdminUsers(users){
+    localStorage.setItem(ADMIN_USERS_KEY, JSON.stringify(users));
+}
+
+// Make sure the default admin account exists
+(function initDefaultAdmin(){
+    var admins = getAdminUsers();
+    var exists = admins.filter(function(a){ return a.email === ADMIN_EMAIL; });
+    if(exists.length === 0){
+        admins.push({ name: 'Admin', email: ADMIN_EMAIL, password: ADMIN_PASSWORD });
+        saveAdminUsers(admins);
+    }
+})();
+
+// ===== Tracking Handler =====
+document.getElementById('trackBtn').addEventListener('click', function(){
+    var ref = document.getElementById('trackRef').value.trim();
+    var result = document.getElementById('trackResult');
+    var details = document.getElementById('trackDetails');
+
+    if(!ref){
+        alert('Please enter your booking reference number.');
+        return;
+    }
+
+    var bookings = getBookings();
+    var found = null;
+    for(var i = 0; i < bookings.length; i++){
+        if(bookings[i].ref.toLowerCase() === ref.toLowerCase()){
+            found = bookings[i];
+            break;
+        }
+    }
+
+    if(!found){
+        details.innerHTML = '<p style="color:#dc3545;font-weight:bold;">❌ No booking found with reference "' + ref + '". Please check your reference number.</p>';
+        result.classList.add('show');
+        return;
+    }
+
+    var statusClass = 'status-pending';
+    if(found.status === 'Confirmed') statusClass = 'status-confirmed';
+    else if(found.status === 'In Repair') statusClass = 'status-repair';
+    else if(found.status === 'Completed') statusClass = 'status-completed';
+    else if(found.status === 'Cancelled') statusClass = 'status-cancelled';
+
+var payClass = found.paymentStatus === 'Paid' ? 'payment-paid' : 'payment-unpaid';
+
+    // Discount status
+    var discountStatus = found.discountStatus || 'Approved';
+    var discountClass = discountStatus === 'Approved' ? 'payment-paid' : 'payment-unpaid';
+    var discountLabel = discountStatus === 'Approved' ? '✅ Approved' : '⏳ Pending Approval';
+
+    var html = '';
+    html += '<p><strong>Reference:</strong> ' + found.ref + '</p>';
+    html += '<p><strong>Customer:</strong> ' + found.name + '</p>';
+    html += '<p><strong>Service:</strong> ' + found.service + '</p>';
+    html += '<p><strong>Date:</strong> ' + found.date + ' at ' + found.time + '</p>';
+    html += '<p><strong>Address:</strong> ' + found.address + '</p>';
+    html += '<p><strong>Payment Method:</strong> ' + found.payment + '</p>';
+    html += '<p><strong>Status:</strong> <span class="status-badge ' + statusClass + '">' + found.status + '</span></p>';
+    html += '<p><strong>Payment:</strong> <span class="payment-badge ' + payClass + '">' + found.paymentStatus + '</span></p>';
+
+    // Price breakdown
+    var basePrice = found.basePrice || 0;
+    var discount = found.discount || 'None';
+    var discountAmt = found.discountAmount || 0;
+    var totalPrice = found.totalPrice || basePrice;
+    html += '<div style="margin-top:15px;padding:15px;background:white;border-radius:8px;border:1px solid #ddd;">';
+    html += '<h4 style="color:#0056b3;margin-bottom:10px;">💰 Price Breakdown</h4>';
+    html += '<p><strong>Base Price:</strong> ₱' + basePrice + '.00</p>';
+    html += '<p><strong>Discount:</strong> ' + discount + (discount !== 'None' ? ' (₱' + discountAmt.toFixed(2) + ')' : '') + '</p>';
+    html += '<p><strong>Discount Status:</strong> <span class="payment-badge ' + discountClass + '">' + discountLabel + '</span></p>';
+    html += '<p><strong style="color:#0056b3;">Total Price:</strong> <strong style="color:#0056b3;">₱' + totalPrice.toFixed(2) + '</strong></p>';
+    html += '</div>';
+
+    // Repair progress bar
+    var stages = ['Diagnostic', 'Repairing', 'Parts Replacement', 'Testing', 'Completed'];
+    var currentStage = found.repairStage || 'Not Started';
+    var stageIndex = stages.indexOf(currentStage);
+    var progressHtml = '<div class="repair-progress"><h4>🔧 Repair Progress</h4><div class="progress-steps">';
+    for(var s = 0; s < stages.length; s++){
+var cls = '';
+        if(s < stageIndex) cls = 'done';
+        else if(s === stageIndex) cls = 'active';
+        progressHtml += '<div class="progress-step ' + cls + '">' + stages[s] + '</div>';
+    }
+    progressHtml += '</div></div>';
+    html += progressHtml;
+
+    details.innerHTML = html;
+    result.classList.add('show');
+});
+
+// ===== Login Handler =====
+document.getElementById('loginBtn').addEventListener('click', function(){
+    var email = document.getElementById('loginEmail').value.trim();
+    var password = document.getElementById('loginPassword').value;
+    var loginError = document.getElementById('loginError');
+    loginError.textContent = '';
+
+    if(!email || !password){
+        loginError.textContent = 'Please enter your email and password.';
+        return;
+    }
+
+    var users = getUsers();
+    var found = users.filter(function(u){ return u.email === email && u.password === password; });
+    if(found.length === 0){
+        loginError.textContent = 'Invalid email or password. Please try again or register.';
+        return;
+    }
+
+    var user = found[0];
+    setCurrentUser({ name: user.name, email: user.email, phone: user.phone });
+
+    document.getElementById('loginEmail').value = '';
+    document.getElementById('loginPassword').value = '';
+
+    closeAuthModal();
+    updateNav();
+    alert('Welcome back, ' + user.name + '!');
+});
+
+// ===== Logout Handler =====
+document.getElementById('logoutNavLink').addEventListener('click', function(e){
+    e.preventDefault();
+    setCurrentUser(null);
+    updateNav();
+    alert('You have been logged out.');
+});
+
+// Initialize auth nav on page load
+updateNav();
+
+// ===== Live Chat Widget =====
+var chatToggle = document.getElementById('chatToggle');
+var chatBox = document.getElementById('chatBox');
+var chatClose = document.getElementById('chatClose');
+var chatMessages = document.getElementById('chatMessages');
+var chatInput = document.getElementById('chatInput');
+var chatSend = document.getElementById('chatSend');
+
+var CHAT_KEY = 'cs_chat_messages';
+
+function getChatMessages(){
+    var data = localStorage.getItem(CHAT_KEY);
+    return data ? JSON.parse(data) : [];
+}
+function saveChatMessages(msgs){
+    localStorage.setItem(CHAT_KEY, JSON.stringify(msgs));
+}
+
+function renderChat(){
+    var msgs = getChatMessages();
+    var html = '';
+    for(var i = 0; i < msgs.length; i++){
+        var m = msgs[i];
+        var cls = m.sender === 'customer' ? 'customer' : 'admin';
+        html += '<div class="chat-msg ' + cls + '">';
+        html += '<span class="chat-name">' + m.name + '</span>';
+        html += m.text;
+        html += '<span class="chat-time">' + m.time + '</span>';
+        html += '</div>';
+    }
+    chatMessages.innerHTML = html;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function sendChatMessage(){
+    var text = chatInput.value.trim();
+    if(!text) return;
+    var user = getCurrentUser();
+    var name = user ? user.name : 'Guest';
+    var email = user ? user.email : 'guest@customer.com';
+    var msgs = getChatMessages();
+    msgs.push({
+        id: 'CHT-' + Date.now().toString().slice(-6),
+        sender: 'customer',
+        from: name,
+        email: email,
+        ref: '',
+        message: text,
+        text: text,
+        name: name,
+        time: new Date().toLocaleString(),
+        read: false
+    });
+    saveChatMessages(msgs);
+    renderChat();
+    chatInput.value = '';
+
+    // Notify admin via email (non-blocking)
+    fetch('https://formsubmit.co/ajax/kuyasaimon.inc@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            Subject: 'New Live Chat Message from ' + name,
+            email: 'kuyasaimon.inc@gmail.com',
+            Customer_Name: name,
+            Customer_Email: email,
+            Message: text
+        })
+    }).catch(function(){});
+}
+
+chatToggle.addEventListener('click', function(){
+    chatBox.classList.toggle('show');
+    renderChat();
+});
+chatClose.addEventListener('click', function(){
+    chatBox.classList.remove('show');
+});
+chatSend.addEventListener('click', sendChatMessage);
+chatInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter') sendChatMessage();
+});
+
+// ===== Report / Feedback Form =====
+document.getElementById('reportForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var repType = document.getElementById('repType').value;
+    var repRef = document.getElementById('repRef').value.trim();
+    var repTechnician = document.getElementById('repTechnician').value.trim();
+    var repRating = document.getElementById('repRating').value;
+    var repMessage = document.getElementById('repMessage').value.trim();
+
+    if(!repType || !repMessage){
+        alert('Please fill in the Report Type and your Message.');
+        return;
+    }
+
+var user = getCurrentUser();
+    var customerName = user ? user.name : 'Guest';
+    var customerEmail = user ? user.email : 'guest@customer.com';
+
+    // Generate a report tracking number
+    var trackNum = 'RPT-' + Date.now().toString().slice(-6);
+
+    // Save report locally
+    var REPORTS_KEY = 'cs_reports';
+    var reports = [];
+    try{ reports = JSON.parse(localStorage.getItem(REPORTS_KEY)) || []; }catch(err){}
+reports.push({
+        id: trackNum,
+        trackNum: trackNum,
+        type: repType,
+        ref: repRef,
+        technician: repTechnician,
+        rating: repRating,
+        message: repMessage,
+        name: customerName,
+        email: customerEmail,
+        status: 'On Process',
+        createdAt: new Date().toISOString()
+    });
+    localStorage.setItem(REPORTS_KEY, JSON.stringify(reports));
+
+    // Show tracking number in the success message
+    document.getElementById('reportTrackingNumber').textContent = trackNum;
+
+    // Send report to email
+    fetch('https://formsubmit.co/ajax/kuyasaimon.inc@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            Subject: 'New Report / Feedback: ' + repType,
+            email: 'kuyasaimon.inc@gmail.com',
+            Report_Tracking_Number: trackNum,
+            Report_Type: repType,
+            Booking_Reference: repRef || 'N/A',
+            Technician: repTechnician || 'N/A',
+            Rating: repRating || 'N/A',
+            Customer_Name: customerName,
+            Customer_Email: customerEmail,
+            Message: repMessage
+        })
+    }).then(function(res){
+        if(!res.ok) throw new Error('Network error');
+        return res.json();
+    }).then(function(){
+        document.getElementById('reportForm').reset();
+        document.getElementById('reportSuccess').classList.add('show');
+        document.getElementById('reportSuccess').scrollIntoView({behavior:'smooth', block:'center'});
+    }).catch(function(){
+        document.getElementById('reportForm').reset();
+        document.getElementById('reportSuccess').classList.add('show');
+        document.getElementById('reportSuccess').scrollIntoView({behavior:'smooth', block:'center'});
+    });
+});
+
+// ===== Track Report Handler =====
+document.getElementById('trackRepBtn').addEventListener('click', function(){
+    var trackNum = document.getElementById('trackRepNum').value.trim();
+    var result = document.getElementById('trackRepResult');
+    var details = document.getElementById('trackRepDetails');
+
+    if(!trackNum){
+        alert('Please enter your report tracking number.');
+        return;
+    }
+
+    var REPORTS_KEY = 'cs_reports';
+    var reports = [];
+    try{ reports = JSON.parse(localStorage.getItem(REPORTS_KEY)) || []; }catch(err){}
+
+    var found = null;
+    for(var i = 0; i < reports.length; i++){
+        if(reports[i].trackNum && reports[i].trackNum.toLowerCase() === trackNum.toLowerCase()){
+            found = reports[i];
+            break;
+        }
+    }
+
+    if(!found){
+        details.innerHTML = '<p style="color:#dc3545;font-weight:bold;">❌ No report found with tracking number "' + trackNum + '". Please check your tracking number.</p>';
+        result.classList.add('show');
+        return;
+    }
+
+    var statusClass = found.status === 'Pending Review' ? 'status-pending' : 'status-completed';
+    var statusLabel = found.status || 'Pending Review';
+
+    var html = '';
+    html += '<p><strong>Tracking Number:</strong> ' + esc(found.trackNum) + '</p>';
+    html += '<p><strong>Report Type:</strong> ' + esc(found.type) + '</p>';
+    html += '<p><strong>Submitted By:</strong> ' + esc(found.name) + '</p>';
+    html += '<p><strong>Submitted:</strong> ' + new Date(found.createdAt).toLocaleString() + '</p>';
+    if(found.ref) html += '<p><strong>Booking Reference:</strong> ' + esc(found.ref) + '</p>';
+    if(found.technician) html += '<p><strong>Technician:</strong> ' + esc(found.technician) + '</p>';
+    if(found.rating) html += '<p><strong>Rating:</strong> ' + esc(found.rating) + '/5</p>';
+    html += '<p><strong>Status:</strong> <span class="status-badge ' + statusClass + '">' + esc(statusLabel) + '</span></p>';
+    html += '<div style="margin-top:15px;padding:15px;background:white;border-radius:8px;border:1px solid #ddd;">';
+    html += '<h4 style="color:#0056b3;margin-bottom:10px;">📝 Message</h4>';
+    html += '<p>' + esc(found.message) + '</p>';
+    html += '</div>';
+
+    details.innerHTML = html;
+    result.classList.add('show');
+});
+
+// Helper: escape HTML for safe display
+function esc(s){
+    s = (s === undefined || s === null) ? '' : String(s);
+    return s.replace(/&/g,'&amp;').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'"').replace(/'/g,'&#39;');
+}
+
+</script>
+
+</body>
+</html>
